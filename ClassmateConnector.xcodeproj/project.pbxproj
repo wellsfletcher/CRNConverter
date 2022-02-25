@@ -19,7 +19,6 @@
 		AA45680527C496B7004DFD8E /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45680427C496B7004DFD8E /* Term.swift */; };
 		AA45684127C5A314004DFD8E /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45684027C5A314004DFD8E /* SignIn.swift */; };
 		AA45684E27C60303004DFD8E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45684D27C60303004DFD8E /* Section.swift */; };
-		AA45685027C60709004DFD8E /* CourseDownloader2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45684F27C60709004DFD8E /* CourseDownloader2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +54,6 @@
 		AA45680427C496B7004DFD8E /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		AA45684027C5A314004DFD8E /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		AA45684D27C60303004DFD8E /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
-		AA45684F27C60709004DFD8E /* CourseDownloader2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDownloader2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +109,6 @@
 				AA4567DA27C48B55004DFD8E /* Assets.xcassets */,
 				AA4567DC27C48B55004DFD8E /* Preview Content */,
 				AA45680027C4968F004DFD8E /* CourseDownloader.swift */,
-				AA45684F27C60709004DFD8E /* CourseDownloader2.swift */,
 				AA45680227C496B1004DFD8E /* Course.swift */,
 				AA45680427C496B7004DFD8E /* Term.swift */,
 				AA45684027C5A314004DFD8E /* SignIn.swift */,
@@ -279,7 +276,6 @@
 				AA45684127C5A314004DFD8E /* SignIn.swift in Sources */,
 				AA4567D927C48B54004DFD8E /* ContentView.swift in Sources */,
 				AA45684E27C60303004DFD8E /* Section.swift in Sources */,
-				AA45685027C60709004DFD8E /* CourseDownloader2.swift in Sources */,
 				AA45680527C496B7004DFD8E /* Term.swift in Sources */,
 				AA45680127C4968F004DFD8E /* CourseDownloader.swift in Sources */,
 				AA4567D727C48B54004DFD8E /* ClassmateConnectorApp.swift in Sources */,
