@@ -19,6 +19,9 @@
 		AA45680527C496B7004DFD8E /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45680427C496B7004DFD8E /* Term.swift */; };
 		AA45684127C5A314004DFD8E /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45684027C5A314004DFD8E /* SignIn.swift */; };
 		AA45684E27C60303004DFD8E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45684D27C60303004DFD8E /* Section.swift */; };
+		AA45685527C9FD0D004DFD8E /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45685427C9FD0D004DFD8E /* ChatView.swift */; };
+		AA45685727C9FD63004DFD8E /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45685627C9FD63004DFD8E /* ChatsView.swift */; };
+		AA45685927CA04BB004DFD8E /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45685827CA04BB004DFD8E /* Chat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		AA45680427C496B7004DFD8E /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		AA45684027C5A314004DFD8E /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		AA45684D27C60303004DFD8E /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		AA45685427C9FD0D004DFD8E /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		AA45685627C9FD63004DFD8E /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
+		AA45685827CA04BB004DFD8E /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,9 @@
 				AA45680427C496B7004DFD8E /* Term.swift */,
 				AA45684027C5A314004DFD8E /* SignIn.swift */,
 				AA45684D27C60303004DFD8E /* Section.swift */,
+				AA45685627C9FD63004DFD8E /* ChatsView.swift */,
+				AA45685427C9FD0D004DFD8E /* ChatView.swift */,
+				AA45685827CA04BB004DFD8E /* Chat.swift */,
 			);
 			path = ClassmateConnector;
 			sourceTree = "<group>";
@@ -275,8 +284,11 @@
 				AA45680327C496B1004DFD8E /* Course.swift in Sources */,
 				AA45684127C5A314004DFD8E /* SignIn.swift in Sources */,
 				AA4567D927C48B54004DFD8E /* ContentView.swift in Sources */,
+				AA45685927CA04BB004DFD8E /* Chat.swift in Sources */,
 				AA45684E27C60303004DFD8E /* Section.swift in Sources */,
+				AA45685527C9FD0D004DFD8E /* ChatView.swift in Sources */,
 				AA45680527C496B7004DFD8E /* Term.swift in Sources */,
+				AA45685727C9FD63004DFD8E /* ChatsView.swift in Sources */,
 				AA45680127C4968F004DFD8E /* CourseDownloader.swift in Sources */,
 				AA4567D727C48B54004DFD8E /* ClassmateConnectorApp.swift in Sources */,
 			);

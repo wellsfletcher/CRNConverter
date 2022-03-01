@@ -8,11 +8,32 @@
 import Foundation
 
 struct CourseDownloader {
-    /*
-    static func downloadTerms(searchTerm: String, completion: @escaping ([Term]) -> Void) {
-        
+    struct TermResponse : Codable {
+        let terms : [String]
     }
-     */
+    
+    static func downloadTerms(completion: @escaping ([Term]) -> Void) {
+        let url = URL(string: "https://gt-scheduler.github.io/crawler/index.json")!
+        let task: URLSessionDataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "error")
+                completion([])
+                return
+            }
+            let jsonDecoder = JSONDecoder()
+            if let termResponse = try? jsonDecoder.decode(TermResponse.self, from: data) {
+                // convert array of term ids to Term objects
+                var terms: [Term] = []
+                for termId in termResponse.terms {
+                    let term = Term(id: termId)
+                    terms.append(term)
+                }
+                completion(terms)
+            }
+            
+        }
+        task.resume()
+    }
     
     static func downloadCourses(searchTerm: String, completion: @escaping ([Course], [String: Course]) -> Void) {
         

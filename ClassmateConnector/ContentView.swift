@@ -15,34 +15,53 @@ struct ContentView: View {
     @State var allCourses: [Course] = []
     @State var crn2course: [String: Course] = [:]
     
-    @State var terms: [Term] = [Term(id: "202202", name: "Spring 2022"), Term(id: "202108", name: "Fall 2021")]
-    @State var selectedTerm: Term = Term(id: "202202", name: "Spring 2022")
+    @State var terms: [Term] = [Term(id: "202202"), Term(id: "202108")]
+    @State var selectedTermId: String = "202202"
     @State var areCoursesLoaded = false
+    @State var areTermsLoaded = false
     
     var body: some View {
         NavigationView {
             VStack {
-                Picker("Choose a term", selection: $selectedTerm) {
-                    ForEach(terms) { term in
-                        Text(term.name).padding()
-                    }
-                }.padding()
-                TextField("Enter CRNs: ", text: $crnInput).padding()
                 List {
-                    ForEach (self.courses) {
-                        course in
-                        let str = course.longTitle + ". " + (course.description ?? "")
-                        Text(course.id + ": " + str).padding()
-                    }
+                    Picker("Choose a term", selection: $selectedTermId) {
+                        ForEach(terms.reversed()) { term in
+                            Text(term.name)// .padding()
+                        }
+                    }.onChange(of: selectedTermId) { newTerm in
+                        // fix: don't refetch when you don't have to
+                        self.areCoursesLoaded = false
+                        print("fetching courses again")
+                        fetchCourses()
+                    }.padding()
+                    TextField("Enter CRNs: ", text: $crnInput).padding()
+                        .onChange(of: crnInput) { newValue in
+                            print("updating courses")
+                            updateCourses()
+                        }
+                    
+                    SwiftUI.Section(content: {
+                        ForEach (self.courses) { course in
+                            VStack(alignment: .leading) {
+                                Text(course.id + ": " + course.longTitle).font(.headline)
+                                Text(course.description ?? "")
+                            }.padding()
+                        }
+                    }, header: {
+                        Text("Courses")
+                    })
                 }
+                NavigationLink(destination: ChatsView(courses: $courses), label: {Text("Chat now!")})
+                    .disabled(!areCoursesLoaded).padding()
+                /*
                 Button(action: {
-                    self.crns = getNumbers(self.crnInput)
-                    self.courses = crns2courses(self.crns, self.selectedTerm)
+                    // updateCourses()
                 }, label: {
                     Text("Convert")
-                }).disabled(!areCoursesLoaded).padding()
+                }).disabled(!areCoursesLoaded).padding()*/
             }.navigationTitle("GT Study Buddy")
         }.onAppear {
+            fetchTerms()
             fetchCourses()
         }
     }
@@ -55,24 +74,31 @@ struct ContentView: View {
             }
     }
     
-    func fetchCourses() {
-        CourseDownloader.downloadCourses(searchTerm: selectedTerm.id) { (allCourses, crn2course) in
-            self.allCourses = allCourses
-            self.crn2course = crn2course
-            
-            self.areCoursesLoaded = true
-            // self.courses = allCourses
+    func fetchTerms() {
+        CourseDownloader.downloadTerms { terms in
+            self.terms = terms
+            self.areTermsLoaded = true
         }
     }
     
-    func crns2courses(_ crns: [Int], _ term: Term) -> [Course] {
+    func fetchCourses() {
+        CourseDownloader.downloadCourses(searchTerm: selectedTermId) { (allCourses, crn2course) in
+            self.allCourses = allCourses
+            self.crn2course = crn2course
+            self.areCoursesLoaded = true
+            updateCourses()
+        }
+    }
+    
+    func updateCourses() {
+        self.crns = getNumbers(self.crnInput)
+        self.courses = crns2courses(self.crns)
+    }
+    
+    func crns2courses(_ crns: [Int]) -> [Course] {
         var courses: [Course] = []
         
-        /*
-        guard let url = URL(string: "https://gt-scheduler.github.io/crawler/" + term.id + ".json") else {
-            return courses
-        }
-         */
+        // may also remove invalid CRNs from the crn list here to
         for crn in crns {
             if let course = crn2course[String(crn)] {
                 courses.append(course)
